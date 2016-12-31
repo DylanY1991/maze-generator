@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maze Generator</title>
+    <meta name="author" content="Yuan Yao">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Maze Generator</h1>
+    </header>
+    
+    <main>
+        <!-- maze generator -->
+        <section id="config">
+            <p>This Program will show you the process to generate a maze with a random width and height.</p>
+            <input class="button" id="generate" type="submit" value="Generate" />
+        </section>
+
+        <!-- maze container -->
+        <section id="canvas">
+            <canvas id="maze"></canvas>
+            <span id="finish">Finished!</span>
+        </section>
+    </main>
+    
+    <!-- script -->
+    <script src="randomMaze.js"></script>
+</body>
+</html>
