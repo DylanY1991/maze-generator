@@ -344,7 +344,6 @@ function stepOut (posX, posY) {
     if (!ifBacktracking) {
         // random a direction!
         let index = Math.floor(Math.random() * nextStep.unvisited.length),
-            direction = nextStep.unvisited[index].dir,
             nextX = nextStep.unvisited[index].x,
             nextY = nextStep.unvisited[index].y;
         
