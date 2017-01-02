@@ -95,7 +95,7 @@ function drawingCanvas () {
     drawingGrids();
     
     // set the root cell
-    updateCurrentCell(currentX, currentY, CELL_COLOR);
+    updateCurrentCell(currentX, currentY, false);
     
     // automate the program
     auto = setInterval(function() { stepOut(currentX, currentY); }, TIMER);
@@ -198,25 +198,21 @@ function neighborType (posX, posY) {
         in the direction of left, right, up and down.
     */
     let left = {
-            dir: 'left',
             x: posX-1, 
             y: posY,
             value: checkValidation(posX-1, posY)
         },
         right = {
-            dir: 'right',
             x: posX+1,
             y: posY,
             value: checkValidation(posX+1, posY)
         },
         up = {
-            dir: 'up',
             x: posX, 
             y: posY-1,
             value: checkValidation(posX, posY-1)
         },
         down = {
-            dir: 'down',
             x: posX, 
             y: posY+1,
             value: checkValidation(posX, posY+1)
@@ -318,7 +314,7 @@ function updateCurrentCell (posX, posY, ifBacktracking) {
 
 function backTrack (visitedCells) {
     // redraw the current cell
-    updateCurrentCell(currentX, currentY, BACKTRACK_COLOR, true);
+    updateCurrentCell(currentX, currentY, true);
     // remove the last element (current) from stack
     TRACKER.pop();
     
