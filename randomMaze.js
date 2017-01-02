@@ -307,8 +307,8 @@ function updateCurrentCell (posX, posY, ifBacktracking) {
         // update the cell's type
         CELLS[Y*posX + posY] = 'visited';
 
-        // push into stack
-        TRACKER.push(Y*posX + posY);
+        // if not existed, push into stack
+        if (TRACKER.peek() !== Y*posX + posY) TRACKER.push(Y*posX + posY);
     }
 }
 
@@ -320,10 +320,14 @@ function backTrack (visitedCells) {
     
     // find the cell to backtrack
     for (let v of visitedCells) {
+        // the expected next cell
         if (TRACKER.peek() === Y*v.x + v.y) {
-            // backtracking
-            moveToNext(v.x, v.y, true);
-            // backtracking over
+            // remove the wall of the explored cell
+            removeTheWall(currentX, currentY, v.x, v.y, true);
+            // set the new 'current'
+            currentX = v.x;
+            currentY = v.y;
+            
             return;
         }
     }
@@ -340,7 +344,6 @@ function stepOut (posX, posY) {
     if (!ifBacktracking) {
         // random a direction!
         let index = Math.floor(Math.random() * nextStep.unvisited.length),
-            direction = nextStep.unvisited[index].dir,
             nextX = nextStep.unvisited[index].x,
             nextY = nextStep.unvisited[index].y;
         
